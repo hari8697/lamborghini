@@ -72,7 +72,7 @@ const Index = () => {
     //Setting scrolltargets
     useEffect(() => {
         targetElement = document.querySelector("html")
-    })
+    }, [])
 
     return (
         <div className="container">
