@@ -7,6 +7,7 @@ import {
     useTransform,
     AnimatePresence,
 } from "framer-motion"
+import { document } from "browser-monads"
 
 // import { Link } from "gatsby"
 // import Layout from "../components/layout"
@@ -61,11 +62,7 @@ const Index = () => {
     }
 
     //scrolltargets
-    let targetElement
-    //Setting scrolltargets
-    useEffect(() => {
-        targetElement = document.querySelector("html")
-    }, [])
+    let targetElement = document.querySelector("html")
 
     //Setting body scroll
     useEffect(() => {
