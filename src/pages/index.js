@@ -36,9 +36,6 @@ const Span = styled.span`
     background: #e8e8e8;
 `
 
-//scrolltargets
-let targetElement = document.querySelector("html")
-
 const Index = () => {
     const ease = [0.6, 0.05, -0.01, 0.99]
     // let x = useSpring(0, { stiffness: 300, damping: 200, ease: ease })
@@ -68,6 +65,13 @@ const Index = () => {
         state
             ? targetElement.classList.add("no-scroll")
             : targetElement.classList.remove("no-scroll")
+    })
+
+    //scrolltargets
+    let targetElement
+    //Setting scrolltargets
+    useEffect(() => {
+        targetElement = document.querySelector("html")
     })
 
     return (
