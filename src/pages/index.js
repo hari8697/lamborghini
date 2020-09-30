@@ -60,19 +60,19 @@ const Index = () => {
         x.set(0)
     }
 
-    //Setting body scroll
-    useEffect(() => {
-        state
-            ? targetElement.classList.add("no-scroll")
-            : targetElement.classList.remove("no-scroll")
-    })
-
     //scrolltargets
     let targetElement
     //Setting scrolltargets
     useEffect(() => {
         targetElement = document.querySelector("html")
     }, [])
+
+    //Setting body scroll
+    useEffect(() => {
+        state
+            ? targetElement.classList.add("no-scroll")
+            : targetElement.classList.remove("no-scroll")
+    }, [state])
 
     return (
         <div className="container">
