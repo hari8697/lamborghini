@@ -21,6 +21,7 @@ import logo from "../images/lamborghini/logo.svg"
 import hamburger from "../images/lamborghini/hamburger-icon.svg"
 import leftArrow from "../images/lamborghini/arrow.svg"
 import close from "../images/lamborghini/close.svg"
+import closeWhite from "../images/lamborghini/close-white.svg"
 import car from "../images/lamborghini/car.png"
 import Button from "../components/styled/buttons"
 
@@ -39,9 +40,9 @@ const Span = styled.span`
 
 const Index = () => {
     const ease = [0.6, 0.05, -0.01, 0.99]
-    // let x = useSpring(0, { stiffness: 300, damping: 200, ease: ease })
-    const x = useMotionValue(0, { stiffness: 300, damping: 200, ease: ease })
-    const width = useTransform(x, [-1160, 0], [265, 0])
+    let x = useSpring(0, { stiffness: 300, damping: 200, ease: ease })
+    // const x = useMotionValue(0, { stiffness: 300, damping: 200, ease: ease })
+    const width = useTransform(x, [-1160, 0], [350, 30])
     const scale = useTransform(x, [-100, 0], [1.2, 1])
     const fadeIn = useTransform(x, [-100, 0], [1, 0])
     const fadeOut = useTransform(x, [-60, 0], [0, 1])
@@ -49,6 +50,7 @@ const Index = () => {
 
     //state
     const [state, setState] = useState(false)
+    const [darkMode, setDarkMode] = useState(false)
 
     useEffect(() => {
         x.onChange(() => {
@@ -86,7 +88,7 @@ const Index = () => {
                 <H4>Back</H4>
             </Section>
             <Span></Span>
-            <motion.Section className="content" style={{ y: up }}>
+            <motion.section className="content" style={{ y: up }}>
                 <H4 className="subheading">Premium</H4>
                 <H1 className="title">Aventador SVJ Roadster</H1>
                 <Para>
@@ -96,13 +98,20 @@ const Index = () => {
                     downforce than the Aventador SV and 1% reduction in the
                     coefficient of drag.
                 </Para>
-                <Button>Book Now</Button>
-            </motion.Section>
+                <Button
+                    onClick={() => {
+                        setDarkMode(!darkMode)
+                    }}
+                >
+                    Book Now
+                </Button>
+            </motion.section>
 
             <div className="product-slide-enlarge">
                 <motion.div
                     style={{ opacity: fadeIn }}
                     className="background"
+                    className={darkMode ? "background dark" : "background"}
                 ></motion.div>
                 <AnimatePresence>
                     {state ? (
@@ -114,9 +123,10 @@ const Index = () => {
                             className="drag-header"
                         >
                             <img src={logo} onClick={closeProductDrag} alt="" />
+
                             <img
                                 onClick={closeProductDrag}
-                                src={close}
+                                src={darkMode ? closeWhite : close}
                                 alt=""
                             />
                         </motion.div>
@@ -138,17 +148,19 @@ const Index = () => {
                     <img src={car} alt="Car" className="car" />
                 </motion.div>
                 <div className="drag_wrapper">
-                    <motion.H4 style={{ opacity: fadeOut, x }}>
+                    <motion.h4 style={{ opacity: fadeOut, x }}>
                         <img src={leftArrow} alt="" />
                         Drag to enlarge
-                    </motion.H4>
+                    </motion.h4>
                 </div>
             </div>
             <div className="progress-bar">
-                <span className="progress one"></span>
+                <span
+                    className={darkMode ? "progress one dark" : "progress one"}
+                ></span>
                 <motion.span
                     style={{ width }}
-                    className="progress two"
+                    className={darkMode ? "progress two dark" : "progress two"}
                 ></motion.span>
             </div>
         </div>
