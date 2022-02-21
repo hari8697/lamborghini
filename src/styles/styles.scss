@@ -24,7 +24,7 @@ body {
 }
 
 section {
-  padding: 20px 55px;
+  padding: 20px 50px;
 }
 
 h1 {
@@ -57,8 +57,17 @@ button {
   padding-top: 10px;
 
   @media only screen and (min-width: 768px) {
-    transform: scale(0.9);
+    justify-self: center;
+    height: initial;
+    border-radius: 16px;
+    box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
     max-width: 375px;
+    transform: scale(0.9) rotate(0.00000000001deg);
+  }
+
+  @media only screen and (min-height: 963px) {
+    transform: none;
   }
 }
 
@@ -75,7 +84,7 @@ button {
 }
 
 .content {
-  padding: 20px 55px;
+  padding: 20px 50px;
 }
 
 .subheading,
@@ -118,7 +127,7 @@ button {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 30px 55px;
+    padding: 30px 50px;
     opacity: 0;
 
     img {
@@ -154,6 +163,16 @@ button {
   position: relative;
   overflow: hidden;
   margin-top: -85px;
+
+  &:hover {
+    cursor: grab;
+  }
+
+  &.active {
+    &:hover {
+      cursor: grabbing;
+    }
+  }
 }
 
 .car {

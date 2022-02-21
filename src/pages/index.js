@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react"
 import App from "../components/appMobile/App"
 import styled from "styled-components"
 import LamboText from "../images/logos/lamborgini-text-logo.svg"
+import ContentWrap from "../components/desktop/ContentWrap"
 
 const IndexStyled = styled.div`
+  height: 100vh;
   .desktopContent {
     display: none;
   }
@@ -11,18 +13,27 @@ const IndexStyled = styled.div`
     .desktopContent {
       display: block;
     }
-    display: flex;
+    display: grid;
     align-items: center;
-    justify-content: space-around;
+    grid-gap: 3rem;
+    grid-template-columns: 0.5fr 1fr 0.5fr;
   }
 `
+const LamboTextStyled = styled.img`
+  justify-self: end;
+  margin-right: 20px;
 
+  @media only screen and (min-width: 900px) {
+    margin-right: 50px;
+  }
+  /* margin-right: -10vw; */
+`
 const Index = () => {
   return (
     <IndexStyled className="">
-      <h5 className="desktopContent">Hello</h5>
+      <ContentWrap></ContentWrap>
       <App></App>
-      <img className="desktopContent" src={LamboText} alt="" />
+      <LamboTextStyled className="desktopContent" src={LamboText} alt="" />
     </IndexStyled>
   )
 }

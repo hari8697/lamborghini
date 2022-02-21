@@ -12,7 +12,6 @@ import { document } from "browser-monads"
 import SEO from "../../components/seo"
 import Section from "./styled/section"
 import { H1, H4, Para } from "./styled/title"
-import "../../styles/styles.scss"
 import logo from "../../images/lamborghini/logo.svg"
 import hamburger from "../../images/lamborghini/hamburger-icon.svg"
 import leftArrow from "../../images/lamborghini/arrow.svg"
@@ -20,6 +19,8 @@ import close from "../../images/lamborghini/close.svg"
 import closeWhite from "../../images/lamborghini/close-white.svg"
 import car from "../../images/lamborghini/car.png"
 import Button from "./styled/buttons"
+
+import "../../styles/styles.scss"
 
 const Nav = styled.nav`
   display: flex;
@@ -47,6 +48,7 @@ const App = () => {
   //state
   const [state, setState] = useState(false)
   const [darkMode, setDarkMode] = useState(false)
+  const [dragging, setDragging] = useState(false)
 
   useEffect(() => {
     x.onChange(() => {
@@ -136,7 +138,15 @@ const App = () => {
                     Aventador SVJ Roadster
                 </motion.H1> */}
       </div>
-      <div className="car_container">
+      <motion.div
+        onTapStart={() => {
+          setDragging(true)
+        }}
+        onPanEnd={() => {
+          setDragging(false)
+        }}
+        className={dragging ? "car_container active" : "car_container"}
+      >
         <motion.div
           style={{ x, scale }}
           drag={"x"}
@@ -152,7 +162,7 @@ const App = () => {
             Drag to enlarge
           </motion.h4>
         </div>
-      </div>
+      </motion.div>
       <div className="progress-bar">
         <span
           className={darkMode ? "progress one dark" : "progress one"}
