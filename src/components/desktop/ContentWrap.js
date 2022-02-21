@@ -4,9 +4,9 @@ import styled from "styled-components"
 import QR_Code from "../../images/site-qr-code.svg"
 
 const ContentWrapStyled = styled.div`
-  margin-left: 50px;
+  margin-left: 20%;
+  margin-bottom: 10vh;
   align-self: end;
-  margin-bottom: 80px;
 
   &&& {
     @media only screen and (min-width: 768px) {
@@ -15,6 +15,8 @@ const ContentWrapStyled = styled.div`
   }
   flex-direction: column;
   grid-gap: 8px;
+
+  max-width: 30ch;
 
   h1 {
     font-size: 24px;

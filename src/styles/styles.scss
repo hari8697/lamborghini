@@ -17,6 +17,12 @@ html {
   &.no-scroll {
     overflow: hidden;
   }
+
+  @media only screen and (min-width: 768px) {
+    &.no-scroll {
+      overflow: initial;
+    }
+  }
 }
 
 body {
@@ -57,17 +63,23 @@ button {
   padding-top: 10px;
 
   @media only screen and (min-width: 768px) {
+    // align-self: start;
     justify-self: center;
     height: initial;
     border-radius: 16px;
     box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.05);
     overflow: hidden;
     max-width: 375px;
+    transform: scale(0.8) rotate(0.00000000001deg);
+  }
+
+  @media only screen and (min-width: 1440px) {
     transform: scale(0.9) rotate(0.00000000001deg);
   }
 
   @media only screen and (min-height: 963px) {
     transform: none;
+    align-self: center;
   }
 }
 

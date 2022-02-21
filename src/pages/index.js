@@ -15,13 +15,14 @@ const IndexStyled = styled.div`
     }
     display: grid;
     align-items: center;
-    grid-gap: 3rem;
+    grid-gap: 1rem;
     grid-template-columns: 0.5fr 1fr 0.5fr;
   }
 `
 const LamboTextStyled = styled.img`
   justify-self: end;
   margin-right: 20px;
+  max-height: 80%;
 
   @media only screen and (min-width: 900px) {
     margin-right: 50px;
