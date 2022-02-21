@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import styled from "styled-components"
 import {
   motion,
@@ -62,17 +62,18 @@ const App = () => {
   }
 
   //scrolltargets
+  const app_container = useRef()
   let targetElement = document.querySelector("html")
 
   //Setting body scroll
   useEffect(() => {
-    state
-      ? targetElement.classList.add("no-scroll")
-      : targetElement.classList.remove("no-scroll")
+    // state
+    //   ? targetElement.classList.add("no-scroll")
+    //   : targetElement.classList.remove("no-scroll")
   }, [state])
 
   return (
-    <div className="app_container">
+    <div className="app_container" ref={app_container}>
       <Section className="navbar">
         <SEO title="Home" />
         <Nav>
